@@ -8,6 +8,7 @@ MG90s Servo (X2)- Servo Motor for controlling Linear Actuators
 MPU6050 Gyroscope (X1)- Gyroscope for determining head rotation 
 
 Half-size Breadboard (X2)-Standard Solderless Breadboards for connecting electronics 
+*Removed breadboard connection bumps to get a smooth rectangle to fit inside 3d prints
 
 ~15 Jumper Wires (M-M) – For wiring 
 
