@@ -1,26 +1,4 @@
 
-
-:@ PD= \ @ 
-
-
-
-
-
-
-
-<!-- Start of picture text -->
-- =<br><!-- End of picture text -->
-
-
-
-<!-- Start of picture text -->
-\<br><!-- End of picture text -->
-
-
-
-<!-- Start of picture text -->
-@<br><!-- End of picture text -->
-
 Bill of Materials (BOM) 
 
 Esp32 DevKitC(X2)- Arduino board for coding the project and bluetooth connectivity 
