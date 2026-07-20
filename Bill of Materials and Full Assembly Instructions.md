@@ -40,6 +40,7 @@ Standard EMS/TENS Unit Self-Adhesive Electrode Pads- (COMES WITH EMS DEVICE) Use
 AA 6V battery case (X1)- Used to power the SERVO breadboard 
 
 AAA 4.5V battery case WITH POWER SWITCH (X1)- Used to power the GYROSCOPE breadboard 
+***VERY IMPORTANT- MAKE SURE THE AAA BATTERIES USED ARE LITHIUM TO MINIMIZE VOLTAGE DROP TO GET A STABLE 4.5 THROUGHOUT LIFETME AND AVOID BROWNOUTS
 
 **Velcro strap-** -To wear the GYROSCOPE breadboard on head 
 
