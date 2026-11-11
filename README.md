@@ -17,11 +17,11 @@ Zapatron was built to tackle a simple problem: students falling asleep in class.
 
 ## Designed and built by me
 
-Everything here was designed from scratch, hardware and software:
+The system architecture, firmware and enclosures are my own work (third-party parts are credited below):
 
 - **Custom 3D-modelled enclosures** for both boards, with cases and caps sized to fit the breadboards and battery packs.
 - **A custom fit for the EMS/TENS unit**, so the slave board mounts directly to it.
-- **Rack-and-pinion linear actuators (75 mm racks) modelled and integrated into the servo box**, which let the servos operate the EMS unit's controls externally.
+- **A servo box with rack-and-pinion linear actuators integrated into it** (75 mm pusher), which let the servos operate the EMS unit's controls externally. The actuator mechanism is adapted from a third-party design, credited below.
 - Firmware for both ESP32s, the Bluetooth protocol between them, and the wiring.
 
 All printable files are in [`Models/`](Models).
@@ -79,6 +79,10 @@ This is a personal hobby prototype, **not a medical or commercial product**.
 - It is designed around one specific EMS/TENS unit (listed in the BOM) and **will not work with every unit**.
 - Follow the manufacturer's safety instructions and terms of service for any EMS/TENS device.
 - I am not responsible for harm caused by this project or by incorrect use of the EMS device. Build and use at your own risk.
+
+## Credits
+
+- Linear actuator mechanism based on [Linear Servo Actuators](https://www.thingiverse.com/thing:3170748) by **potentprintables** on Thingiverse, licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/). The actuator parts in `Models/SlaveModels/Linear Actuators/` are derived from or adapted from that design. Non-commercial use only.
 
 ## Tech
 
