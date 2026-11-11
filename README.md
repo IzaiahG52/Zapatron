@@ -15,6 +15,16 @@ Zapatron was built to tackle a simple problem: students falling asleep in class.
 ![Build photo](showcase/your-photo.jpg)
 -->
 
+## Build photos
+
+| Servo board prototype | Enclosure iterations |
+|---|---|
+| <img src="photos/servo-board-prototype.jpg" width="300" alt="Servo board prototype: ESP32, two MG90S servos and rack-and-pinion actuators in the printed servo box"> | <img src="photos/enclosure-iterations-1.jpg" width="420" alt="Three printed enclosure iterations"> |
+
+<img src="photos/enclosure-iterations-2.jpg" width="420" alt="Enclosure versions with battery packs"> <img src="photos/enclosure-with-battery.jpg" width="250" alt="Enclosure with battery pack mounted on top">
+
+Printing several versions of each case was part of getting the fit right around the breadboards, battery packs and servos.
+
 ## Designed and built by me
 
 The system architecture, firmware and enclosures are my own work (third-party parts are credited below):
@@ -65,9 +75,9 @@ Bill of Materials and Full Assembly Instructions.md
 1. Parts and assembly: see the [Bill of Materials and Full Assembly Instructions](Bill%20of%20Materials%20and%20Full%20Assembly%20Instructions.md).
 2. 3D print the parts in [`Models/`](Models).
 3. Install [VS Code](https://code.visualstudio.com/) with the PlatformIO extension.
-4. Create one PlatformIO project per board (board: **ESP32 DevKitC**, framework: **Arduino**). Set `monitor_speed = 115200`.
-5. Flash `MasterESP32/main.cpp` and `SlaveESP32/main.cpp` to the matching boards.
-6. Libraries: MPU6050 (master), ArduinoJson (both), ESP32Servo (slave), BluetoothSerial (built into the ESP32 Arduino core).
+4. Create one PlatformIO project per board (board: `esp32doit-devkit-v1`, framework: Arduino) and copy in the matching `platformio.ini` from [`MasterESP32/`](MasterESP32) or [`SlaveESP32/`](SlaveESP32). It sets `monitor_speed = 115200` and pulls in the libraries.
+5. Put `MasterESP32/main.cpp` and `SlaveESP32/main.cpp` in each project's `src/` folder and flash them to the matching boards.
+6. Libraries (installed automatically from `platformio.ini`): [ArduinoJson](https://github.com/bblanchon/ArduinoJson) 7.4.2 (both), [MPU6050 (electroniccats)](https://github.com/ElectronicCats/mpu6050) 1.4.4 (master), [ESP32Servo](https://github.com/madhephaestus/ESP32Servo) 3.0.9 (slave). BluetoothSerial is built into the ESP32 Arduino core.
 7. Power both boards. When they pair, the blue LED turns on for each.
 
 **Tip:** use lithium AAA batteries for the gyroscope board to avoid voltage drop and brownouts.
