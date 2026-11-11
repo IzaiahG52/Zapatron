@@ -60,6 +60,24 @@ In `MasterESP32/main.cpp`:
 
 The values currently in the file are the short *testing* settings. Adjust them for real use.
 
+## Wiring
+
+Pin assignments come straight from the firmware (`Wire.begin(32, 33)` on the master, `servo1Pin = 26` and `servo2Pin = 27` on the slave).
+
+| Board | Connection | ESP32 pin |
+|-------|------------|-----------|
+| Master | MPU6050 VCC | 3V3 |
+| Master | MPU6050 GND | GND |
+| Master | MPU6050 SDA | GPIO 32 |
+| Master | MPU6050 SCL | GPIO 33 |
+| Slave | Servo 1 signal | GPIO 26 |
+| Slave | Servo 2 signal | GPIO 27 |
+| Both | Status LED | GPIO 2 (onboard) |
+
+<img src="wiring/zapatron-wiring-master.png" width="420" alt="Master board wiring: ESP32 on a breadboard with the MPU6050 on I2C pins 32 and 33"> <img src="wiring/zapatron-wiring-slave.png" width="520" alt="Slave board wiring: ESP32 on a breadboard driving two servos from GPIO 26 and 27">
+
+The diagrams were made in [Wokwi](https://wokwi.com) (project file: [`wiring/wokwi-diagram.json`](wiring/wokwi-diagram.json)) and show the signal and sensor wiring. Each board is powered from its own battery pack, which is not drawn, and the servo power lines are simplified. Full overview: [`wiring/zapatron-wiring-overview.png`](wiring/zapatron-wiring-overview.png).
+
 ## Repository layout
 
 ```
