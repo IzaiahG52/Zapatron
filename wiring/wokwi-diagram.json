@@ -3,25 +3,122 @@
   "author": "Zapatron",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 4, "left": -111, "rotate": 90, "attrs": {} },
-    { "type": "wokwi-breadboard-half", "id": "bb2", "top": 4, "left": 529, "rotate": 90, "attrs": {} },
-    { "type": "board-esp32-devkit-c-v4", "id": "master", "top": 0, "left": 0, "attrs": {} },
-    { "type": "wokwi-mpu6050", "id": "imu", "top": 150, "left": -200, "rotate": 90, "attrs": {} },
-    { "type": "board-esp32-devkit-c-v4", "id": "slave", "top": 0, "left": 640, "attrs": {} },
-    { "type": "wokwi-servo", "id": "servo1", "top": -20, "left": 345, "rotate": 180, "attrs": {} },
-    { "type": "wokwi-servo", "id": "servo2", "top": 140, "left": 345, "rotate": 180, "attrs": {} }
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": 4,
+      "left": -41,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb2",
+      "top": 4,
+      "left": 489,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "master",
+      "top": 0,
+      "left": 70,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "imu",
+      "top": 150,
+      "left": -130,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "slave",
+      "top": 0,
+      "left": 600,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -20,
+      "left": 350,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo2",
+      "top": 140,
+      "left": 350,
+      "rotate": 180,
+      "attrs": {}
+    }
   ],
   "connections": [
-    ["master:3V3", "imu:VCC", "orange", []],
-    ["master:GND.1", "imu:GND", "black", []],
-    ["master:32", "imu:SDA", "green", []],
-    ["master:33", "imu:SCL", "gold", []],
-    ["slave:26", "servo1:PWM", "orange", []],
-    ["slave:27", "servo2:PWM", "orange", []],
-    ["slave:5V", "servo1:V+", "red", []],
-    ["slave:5V", "servo2:V+", "red", []],
-    ["slave:GND.1", "servo1:GND", "black", []],
-    ["slave:GND.1", "servo2:GND", "black", []]
+    [
+      "master:3V3",
+      "imu:VCC",
+      "orange",
+      []
+    ],
+    [
+      "master:GND.1",
+      "imu:GND",
+      "black",
+      []
+    ],
+    [
+      "master:32",
+      "imu:SDA",
+      "green",
+      []
+    ],
+    [
+      "master:33",
+      "imu:SCL",
+      "gold",
+      []
+    ],
+    [
+      "slave:26",
+      "servo1:PWM",
+      "orange",
+      []
+    ],
+    [
+      "slave:27",
+      "servo2:PWM",
+      "orange",
+      []
+    ],
+    [
+      "slave:5V",
+      "servo1:V+",
+      "red",
+      []
+    ],
+    [
+      "slave:5V",
+      "servo2:V+",
+      "red",
+      []
+    ],
+    [
+      "slave:GND.1",
+      "servo1:GND",
+      "black",
+      []
+    ],
+    [
+      "slave:GND.1",
+      "servo2:GND",
+      "black",
+      []
+    ]
   ],
   "dependencies": {}
 }
