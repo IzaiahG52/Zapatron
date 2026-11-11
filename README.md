@@ -10,11 +10,21 @@ Zapatron was built to tackle a simple problem: students falling asleep in class.
 
 ## Demo
 
-- [Watch the showcase video](showcase/Showcase_VIDEO.mp4)
-
-<!-- TODO: add build photos and a new demo video here, e.g.
+<!-- TODO: add the new demo video and build photos here, e.g.
+[Watch the demo](showcase/demo.mp4)
 ![Build photo](showcase/your-photo.jpg)
 -->
+
+## Designed and built by me
+
+Everything here was designed from scratch, hardware and software:
+
+- **Custom 3D-modelled enclosures** for both boards, with cases and caps sized to fit the breadboards and battery packs.
+- **A custom fit for the EMS/TENS unit**, so the slave board mounts directly to it.
+- **Rack-and-pinion linear actuators (75 mm racks) modelled and integrated into the servo box**, which let the servos operate the EMS unit's controls externally.
+- Firmware for both ESP32s, the Bluetooth protocol between them, and the wiring.
+
+All printable files are in [`Models/`](Models).
 
 ## How it works
 
@@ -27,7 +37,7 @@ Two ESP32 DevKitC boards talk over Bluetooth Classic:
 
 1. The **master** reads the MPU6050 over I2C about every 50 ms and computes head **pitch** from the accelerometer.
 2. If pitch stays below a threshold (head dropped) for a set hold time, it sends a JSON message over Bluetooth, e.g. `{"below":true,"above":false,"boot":false,"pitch":-57.3}`.
-3. The **slave** parses the JSON and drives its servos while the head stays down.
+3. The **slave** parses the JSON and drives its servos, which operate the EMS unit's controls through the linear actuators, while the head stays down.
 4. When the head comes back up, the master sends a `boot` message that triggers a reset sequence on the second servo.
 5. If the Bluetooth link drops, the slave returns to its rest position and signals on reconnect, and the onboard LED shows connection state on both boards.
 
