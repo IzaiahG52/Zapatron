@@ -10,10 +10,9 @@ Zapatron was built to tackle a simple problem: students falling asleep in class.
 
 ## Demo
 
-<!-- TODO: add the new demo video and build photos here, e.g.
-[Watch the demo](showcase/demo.mp4)
-![Build photo](showcase/your-photo.jpg)
--->
+[![Zapatron demo video - click to watch](showcase/demo-thumbnail.jpg)](showcase/Zapatron_Showcase.mp4)
+
+*Click the image to watch the 39-second demo.* The head board is switched on and the servo board powers up. When my head stays down past the set angle and time, the head board sends a JSON message over Bluetooth, and the servo board's linear actuators press the EMS unit's controls. The stimulation increases until I lift my head, which resets the system.
 
 ## Build photos
 
