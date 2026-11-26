@@ -4,7 +4,7 @@
 #include <ESP32Servo.h>
 
 BluetoothSerial SerialBT;
-//omg wow Izaiah is so cool :)
+
 // --- LED ---
 const int LED_PIN = 2;   // Built-in blue LED
 
@@ -55,7 +55,7 @@ void setup() {
 }
 
 void loop() {
-  // Check BLE connection
+  // Check Bluetooth connection
   if (!SerialBT.connected()) {
 
     if (!connectionLostHandled) { 
@@ -87,7 +87,7 @@ void loop() {
     connectionLostHandled = false; 
   }
 
-  // Read BLE JSON
+  // Read JSON from the master over Bluetooth
   if (SerialBT.available()) {
     String jsonStr = SerialBT.readStringUntil('\n');
     Serial.print("RX: "); Serial.println(jsonStr);

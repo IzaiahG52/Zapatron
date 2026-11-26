@@ -6,7 +6,7 @@
 
 BluetoothSerial SerialBT;
 MPU6050 mpu;
-//Izaiah is so cool :)
+
 // --- LED ---
 const int LED_PIN = 2;   // Built-in blue LED
 
@@ -17,6 +17,20 @@ unsigned long holdTime = 3000;    // SHOULD BE ~20 SECS, ***FOR TESTING SET TO 3
 unsigned long belowStart = 0;
 bool belowActive = false;
 bool wasBelow = false;            // Track previous state
+
+// Sends one JSON status message to the slave over Bluetooth.
+// "pitch" is only included when a real value is passed (the boot message has none).
+void sendStatus(bool below, bool above, bool boot, float pitch = NAN) {
+  StaticJsonDocument<200> doc;
+  doc["below"] = below;
+  doc["above"] = above;
+  doc["boot"]  = boot;
+  if (!isnan(pitch)) doc["pitch"] = pitch;
+
+  String jsonStr;
+  serializeJson(doc, jsonStr);
+  SerialBT.println(jsonStr);
+}
 
 void setup() {
   Serial.begin(115200);
@@ -44,7 +58,7 @@ void setup() {
   }
 
   Serial.println("Connected to ESP32_Slave!");
-  digitalWrite(LED_PIN, HIGH); // LED ON when connected to master
+  digitalWrite(LED_PIN, HIGH); // LED ON when connected to slave
 }
 
 void loop() {
@@ -65,40 +79,17 @@ void loop() {
       belowStart = now;
     }
     if (belowActive && now - belowStart >= holdTime) {
-      StaticJsonDocument<200> doc;
-      doc["below"] = true;
-      doc["above"] = false;
-      doc["boot"] = false;
-      doc["pitch"] = pitch;
-
-      String jsonStr;
-      serializeJson(doc, jsonStr);
-      SerialBT.println(jsonStr);
+      sendStatus(true, false, false, pitch);
       Serial.println(">>> BELOW sent <<<");
 
       wasBelow = true;
     }
   } else {
-    StaticJsonDocument<200> doc;
-    doc["below"] = false;
-    doc["above"] = true;
-    doc["boot"] = false;
-    doc["pitch"] = pitch;
-
-    String jsonStr;
-    serializeJson(doc, jsonStr);
-    SerialBT.println(jsonStr);
+    sendStatus(false, true, false, pitch);
     Serial.println(">>> ABOVE sent <<<");
 
     if (wasBelow) {
-      StaticJsonDocument<200> bootDoc;
-      bootDoc["below"] = false;
-      bootDoc["above"] = false;
-      bootDoc["boot"] = true;
-
-      String bootStr;
-      serializeJson(bootDoc, bootStr);
-      SerialBT.println(bootStr);
+      sendStatus(false, false, true);
       Serial.println(">>> BOOT sent <<<");
 
       wasBelow = false;
